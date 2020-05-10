@@ -1,9 +1,4 @@
 import { Router } from 'express';
-import { parseISO } from 'date-fns';
-import { getCustomRepository } from 'typeorm';
-
-import AppointmentsRepository from '../repositories/AppointmentsRepository';
-import CreateAppointmentService from '../services/CreateAppointmentService';
 import AuthenticateUSerService from '../services/AuthenticateUserService';
 
 const sessionsRouter = Router();
@@ -14,14 +9,14 @@ sessionsRouter.post('/', async (request, response) => {
 
     const authenticateUser = new AuthenticateUSerService();
 
-    const { user } = await authenticateUser.execute({
+    const { user, token } = await authenticateUser.execute({
       email,
       password,
     });
 
     delete user.password;
 
-    return response.json({ user });
+    return response.json({ user, token });
   } catch (err) {
     return response.status(400).json({ error: err.message });
   }
