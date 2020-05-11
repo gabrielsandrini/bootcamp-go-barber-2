@@ -23,7 +23,8 @@
     "prettier/prettier": "error",
     "import/extensions": {
       "ts": "never"
-    }
+    },
+    "@typescript-eslint/rule-name": "error"
   },
   "settings": {
     "import/resolver": {
