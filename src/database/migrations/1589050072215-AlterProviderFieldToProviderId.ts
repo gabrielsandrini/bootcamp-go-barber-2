@@ -7,7 +7,7 @@ import {
 
 export default class AlterProviderFieldToProviderId1589050072215
   implements MigrationInterface {
-  public async up(queryRunner: QueryRunner): Promise<any> {
+  public async up(queryRunner: QueryRunner): Promise<void> {
     await queryRunner.dropColumn('appointments', 'provider');
 
     await queryRunner.addColumn(
@@ -32,7 +32,7 @@ export default class AlterProviderFieldToProviderId1589050072215
     );
   }
 
-  public async down(queryRunner: QueryRunner): Promise<any> {
+  public async down(queryRunner: QueryRunner): Promise<void> {
     await queryRunner.dropForeignKey('appointments', 'AppointmentProvider');
 
     await queryRunner.dropColumn('appointments', 'provider_id');
