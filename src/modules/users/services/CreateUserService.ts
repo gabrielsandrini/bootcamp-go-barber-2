@@ -1,3 +1,4 @@
+import { injectable, inject } from 'tsyringe';
 import { hash } from 'bcryptjs';
 
 import AppError from '@shared/errors/AppError';
@@ -10,8 +11,12 @@ interface IRequest {
   password: string;
 }
 
+@injectable()
 class CreateUserService {
-  constructor(private usersRepository: IUserRepository) {}
+  constructor(
+    @inject('UsersRepository')
+    private usersRepository: IUserRepository,
+  ) {}
 
   public async execute({ name, email, password }: IRequest): Promise<User> {
     const checkUSerExists = await this.usersRepository.findByEmail(email);
