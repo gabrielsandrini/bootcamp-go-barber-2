@@ -5,7 +5,7 @@ import authConfig from '@config/auth';
 
 import AppError from '@shared/errors/AppError';
 import User from '../infra/typeorm/entities/User';
-import IUserRepository from '../repository/IUsersRepository';
+import IUserRepository from '../repositories/IUsersRepository';
 
 interface IRequest {
   email: string;
