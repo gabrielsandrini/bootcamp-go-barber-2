@@ -13,7 +13,7 @@ describe('ListProviderMonthAvailability', () => {
     );
   });
 
-  it('Should be able to list the month avilability from provider', async () => {
+  it('Should be able to list the month availability from provider', async () => {
     const hours = [8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18];
     await Promise.all([
       hours.map(hour =>
