@@ -58,7 +58,7 @@ class AppointmentsRepository implements IAppointmentsRepository {
     month,
     year,
   }: IFindAllInDayFromProviderDTO): Promise<Appointment[]> {
-    const dateInDay = new Date(year, month, day);
+    const dateInDay = new Date(year, month - 1, day);
 
     const findAppointments = await this.ormRepository.find({
       where: {
