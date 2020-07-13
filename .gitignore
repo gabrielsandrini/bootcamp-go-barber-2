@@ -5,3 +5,4 @@ yarn-error.log
 tmp/*
 !tmp/.gitkeep
 coverage/
+.env
