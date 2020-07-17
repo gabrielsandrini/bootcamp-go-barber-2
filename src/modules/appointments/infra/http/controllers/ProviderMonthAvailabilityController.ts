@@ -6,19 +6,19 @@ import ProviderMonthAvailabilityService from '@modules/appointments/services/Lis
 class ProviderMonthAvailabilityController {
   async index(request: Request, response: Response): Promise<Response> {
     const { provider_id } = request.params;
-    const { month, year } = request.body;
+    const { month, year } = request.query;
 
     const providerMonthAvailabilityService = container.resolve(
       ProviderMonthAvailabilityService,
     );
 
-    const avaliability = await providerMonthAvailabilityService.execute({
-      month,
-      year,
+    const availability = await providerMonthAvailabilityService.execute({
+      month: Number(month),
+      year: Number(year),
       provider_id,
     });
 
-    return response.json(avaliability);
+    return response.json(availability);
   }
 }
 
