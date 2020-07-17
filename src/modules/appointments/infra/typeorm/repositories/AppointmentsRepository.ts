@@ -73,6 +73,7 @@ class AppointmentsRepository implements IAppointmentsRepository {
         provider_id,
         date: Between(startOfDay(dateInDay), endOfDay(dateInDay)),
       },
+      relations: ['user'],
     });
 
     return findAppointments;
