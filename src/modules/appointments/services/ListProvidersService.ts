@@ -2,12 +2,13 @@ import { inject, injectable } from 'tsyringe';
 import IUserRepository from '@modules/users/repositories/IUsersRepository';
 import User from '@modules/users/infra/typeorm/entities/User';
 import ICacheProvider from '@shared/container/providers/CacheProvider/models/ICacheProvider';
+import { classToClass } from 'class-transformer';
 
 interface IRequest {
   user_id?: string;
 }
 @injectable()
-class UpdateUserProfileService {
+class ListProviderService {
   constructor(
     @inject('UsersRepository')
     private usersRepository: IUserRepository,
@@ -27,9 +28,10 @@ class UpdateUserProfileService {
       });
     }
 
+    users = classToClass(users);
     this.cacheProvider.save(`providers-list:${user_id}`, users);
 
     return users;
   }
 }
-export default UpdateUserProfileService;
+export default ListProviderService;
