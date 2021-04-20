@@ -6,3 +6,4 @@ tmp/*
 !tmp/.gitkeep
 coverage/
 .env
+package-lock.json
